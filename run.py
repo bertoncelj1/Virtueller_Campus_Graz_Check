@@ -6,7 +6,7 @@ from getpass import getpass
 username = ""
 password = ""
 
-debug = False
+debug = True
 
 def write_file(file_name, content):
     file = open(file_name,"w")
@@ -62,10 +62,9 @@ def login(session, username, password):
     'j_password': password,
     'j_username': username,
     }
-
     webpage = session.post(url, data=data)
     if debug:
-        write_file("login.html", webpage)
+        write_file("login.html", webpage.text)
     
     return len(webpage.text) == 0
     
@@ -95,6 +94,7 @@ while not login_succesful:
         print("Wrong username or password")
         print()
         username_tmp = ""
+        password = "" # we need to set password to empyt so it doesn't catch itself into infinite loop
     
 
 
