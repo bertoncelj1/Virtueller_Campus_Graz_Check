@@ -6,7 +6,7 @@ from getpass import getpass
 username = ""
 password = ""
 
-debug = True
+debug = False
 
 def write_file(file_name, content):
     file = open(file_name,"w")
